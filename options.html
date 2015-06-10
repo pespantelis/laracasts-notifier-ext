@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Laracasts Notifier</title>
+    <link rel="stylesheet" href="assets/chrome-bootstrap.min.css">
+  </head>
+  <body class="chrome-bootstrap">
+    <div class="frame">
+      <div class="navigation">
+        <h1><a href="#">Laracasts Notifier</a></h1>
+        <ul class="menu">
+          <li class="selected">
+            <a href="#interval">Interval</a>
+          </li>
+          <li>
+            <a href="#badge">Badge</a>
+          </li>
+        </ul>
+      </div>
+      <div class="mainview view">
+
+        <div id="interval" class="selected">
+          <header>
+            <h1>Interval</h1>
+          </header>
+          <div class="content">
+            <div style="margin: 40px 0 10px;">
+              <p>Set the interval between checks (in minutes).</p>
+              <input id="interval_value" type="number">
+              <div class="controls">
+                <button class="save_button">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="badge">
+          <header>
+            <h1>Badge</h1>
+          </header>
+          <div class="content">
+            <div style="margin: 40px 0 10px;">
+              <p>Set the text of badge.</p>
+              <input id="badge_value">
+              <div class="controls">
+                <button class="save_button">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/jquery.js" type="text/javascript"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

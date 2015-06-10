@@ -9,11 +9,11 @@ var lastLesson;
 
     storage.get(function (items) {
       if (lastLesson !== items.laracasts_last_lesson)
-        browserAction.setBadgeText({ text: '{ }' });
+        browserAction.setBadgeText({ text: items.laracasts_badge });
+
+      setTimeout(check, 1000*60*items.laracasts_interval); // in minutes
     });
   });
-
-  setTimeout(check, 1000*60*15); // 15 minutes
 })();
 
 browserAction.onClicked.addListener(function (tab) {
@@ -26,4 +26,9 @@ browserAction.onClicked.addListener(function (tab) {
 
 chrome.runtime.onInstalled.addListener(function () {
   browserAction.setBadgeBackgroundColor({ color: "#f9604c" });
+
+  storage.set({
+    'laracasts_interval': 15,
+    'laracasts_badge': '{ }'
+  });
 });
