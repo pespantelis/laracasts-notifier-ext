@@ -11,12 +11,20 @@ $(function() {
 
   $sections.not('.selected').css('display', 'none');
 
+  var toggleAlert = function() {
+    $('.alert').fadeToggle();
+  }
+
   $('.save_button').click(function() {
     storage.set({
       'laracasts_interval': $interval.val(),
       'laracasts_badge': $badge.val()
     }, function() {
       chrome.browserAction.setBadgeText({ text: $badge.val() });
+
+      toggleAlert();
+
+      setTimeout(toggleAlert, 2500);
     });
   });
 
