@@ -1,4 +1,5 @@
 $(function() {
+  var browserAction = chrome.browserAction;
   var storage = chrome.storage.local;
   var $interval = $('#interval_value');
   var $badge = $('#badge_value');
@@ -20,7 +21,11 @@ $(function() {
       'laracasts_interval': $interval.val(),
       'laracasts_badge': $badge.val()
     }, function() {
-      chrome.browserAction.setBadgeText({ text: $badge.val() });
+      browserAction.getBadgeText({}, function(text) {
+        if(text !== '') {
+          browserAction.setBadgeText({ text: $badge.val() });
+        }
+      });
 
       toggleAlert();
 
