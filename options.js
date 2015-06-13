@@ -16,6 +16,10 @@ $(function() {
     $('.alert').fadeToggle();
   }
 
+  var setBadge = function(text) {
+    browserAction.setBadgeText({ text: text });
+  }
+
   $('.save_button').click(function() {
     storage.set({
       'laracasts_interval': $interval.val(),
@@ -23,7 +27,7 @@ $(function() {
     }, function() {
       browserAction.getBadgeText({}, function(text) {
         if(text !== '') {
-          browserAction.setBadgeText({ text: $badge.val() });
+          setBadge($badge.val());
         }
       });
 
@@ -31,6 +35,14 @@ $(function() {
 
       setTimeout(toggleAlert, 2500);
     });
+  });
+
+  $('.show_badge').click(function() {
+      browserAction.getBadgeText({}, function(text) {
+        setBadge($badge.val());
+
+        setTimeout(setBadge, 2000, text);
+      });
   });
 
   $('.menu a').click(function(ev) {
